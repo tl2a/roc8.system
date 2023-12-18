@@ -31,7 +31,7 @@ function Page() {
             id: 'apexchart-line'
         },
         xaxis: {
-            categories: Object.keys(Data.groupBy(({ Day }) => Day))
+            categories: Object.keys(Data.groupBy(({ Day }) => Day)) // eslint-disable-line
         }
     }
     
@@ -75,7 +75,8 @@ function Page() {
 
     useEffect(() => {
         let totalByDate: number[] = []
-        Object.entries(Data.groupBy(({ Day }) => Day)).map((dt: any[]) => {
+        // eslint-disa
+        Object.entries(Data.groupBy(({ Day }) => Day)).map((dt: any[]) => { // eslint-disable-line
             let sum = 0
             
             dt[1].map((f:any) => sum+=f[feature])
