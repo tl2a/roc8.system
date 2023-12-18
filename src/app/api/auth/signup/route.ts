@@ -43,5 +43,5 @@ export async function POST(req: Request, res: Response) {
     })
   }
 
-  return NextResponse.json({ 'message': 'Account created successfully!', status: 200 }, { status: 200 })
+  return NextResponse.json({ 'message': 'Account created successfully!', ok: 200 }, { status: 200 })
 }

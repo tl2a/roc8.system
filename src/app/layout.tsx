@@ -7,6 +7,8 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import AuthProvider from './context/AuthProvider'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { Toaster } from '@/components/ui/toaster'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,10 +29,18 @@ export default function RootLayout({
         inter.className
       )}>
         <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           <MaxWidthWrapper>
             <Navbar />
             {children}
           </MaxWidthWrapper>
+          <Toaster />
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

@@ -16,10 +16,12 @@ import {
     MenubarTrigger,
 } from "@/components/ui/menubar"
 import { useRouter } from 'next/navigation'
-import { options } from '@/app/api/auth/[...nextauth]/options'
+import { useTheme } from "next-themes"
 import { signOut, useSession } from 'next-auth/react'
 
 const Navbar = () => {
+    const { theme, setTheme } = useTheme()
+
     const { data: session } = useSession({
         required: true,
         onUnauthenticated() {
@@ -35,10 +37,10 @@ const Navbar = () => {
                 <MenubarMenu>
                     <MenubarTrigger>Roc8 Systems</MenubarTrigger>
                     <MenubarContent>
-                        <MenubarRadioGroup value="benoit">
-                            <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
-                            <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-                            <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
+                        <MenubarRadioGroup value={theme}>
+                            <MenubarRadioItem value="light" onClick={() => setTheme("light")}>Light</MenubarRadioItem>
+                            <MenubarRadioItem value="dark" onClick={() => setTheme("dark")}>Dark</MenubarRadioItem>
+                            <MenubarRadioItem value="system" onClick={() => setTheme("system")}>System</MenubarRadioItem>
                         </MenubarRadioGroup>
                         <MenubarSeparator />
                         <MenubarItem inset onSelect={() => {
