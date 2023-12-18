@@ -59,7 +59,7 @@ const Navbar = () => {
                         {session ?
                             <MenubarItem inset onSelect={() => {
                                 signOut({ redirect: false }).then(() => {
-                                    router.push("/") // Redirect to the dashboard page after signing out
+                                    router.push("/join") // Redirect to the dashboard page after signing out
                                 });
                             }}>Sign Out</MenubarItem>
                             :
