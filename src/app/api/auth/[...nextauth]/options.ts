@@ -40,7 +40,7 @@ export const options: NextAuthOptions = {
                 .eq('email', credentials?.email)
                 .eq('password', credentials?.password)
 
-                if (existingUser.length) {
+                if (existingUser?.length) {
                     return existingUser[0]
                 } else {
                     return null

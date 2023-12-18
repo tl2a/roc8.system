@@ -23,7 +23,7 @@ export async function POST(req: Request, res: Response) {
   .select()
   .eq('email', email)
 
-  if (existingUser.length) {
+  if (existingUser?.length) {
     console.log(existingUser);
     
     return new Response('User exists already!', {
