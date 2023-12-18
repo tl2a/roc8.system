@@ -59,7 +59,7 @@ export default function Page() {
           <CardHeader>
             <CardTitle>Sign Up</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+              Make changes to your account here. Click save when you&apos;re done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -84,7 +84,7 @@ export default function Page() {
           <CardHeader>
             <CardTitle>Sign In</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+              Make changes to your account here. Click save when you&apos;re done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
