@@ -16,7 +16,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
   
-function page() {
+function Page() {
     const [Data, setData] = useState(data)
     const [feature, setFeature] = useState('A')
     const [range, setRange] = useState([
@@ -146,4 +146,4 @@ function page() {
         )
     }
     
-    export default page
+    export default Page

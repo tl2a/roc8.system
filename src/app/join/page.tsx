@@ -19,7 +19,7 @@ import {
 import { signIn } from "next-auth/react"
 import { useRef } from "react"
 
-export default function page() {
+export default function Page() {
   const name = useRef("");
   const email = useRef("");
   const mail = useRef("");
