@@ -17,12 +17,14 @@ import {
 } from "@/components/ui/card"
   
 function Page() {
-    const [Data, setData] = useState(data)
+    const [Data, setData] = useState<Record<string, any>>(data)
+    const [seriesLine, setSeriesLine] = useState<ApexAxisChartSeries | ApexNonAxisChartSeries | undefined>([])
+
     const [feature, setFeature] = useState('A')
     const [range, setRange] = useState([
         {
-            startDate: parse(data[0].Day, 'dd/MM/yyyy', new Date()),
-            endDate: parse(data.at(-1).Day, 'dd/MM/yyyy', new Date()),
+            startDate: parse(Data[0].Day, 'dd/MM/yyyy', new Date()),
+            endDate: parse(Data.at(-1).Day, 'dd/MM/yyyy', new Date()),
             key: 'selection'
         }
     ]);
@@ -31,7 +33,7 @@ function Page() {
             id: 'apexchart-line'
         },
         xaxis: {
-            categories: Object.keys(Data.groupBy(({ Day }) => Day)) // eslint-disable-line
+            categories: Object.keys(Data.groupBy(({ Day }: { Day: string }) => Day))
         }
     }
     
@@ -39,7 +41,7 @@ function Page() {
         chart: {
             id: 'apexchart-bar',
             events: {
-                click: (event, chartContext, config) => {                   
+                click: (event: Record<string, any>, chartContext: Record<string, any>, config: Record<string, any>) => {                   
                     if(config.dataPointIndex >= 0) setFeature(config.config.xaxis.categories[config.dataPointIndex])
                 }
             },
@@ -57,7 +59,7 @@ function Page() {
     }
 
     let A = 0, B = 0, C = 0, D = 0, E = 0, F = 0;
-    Data.map((dt) => {
+    Data.map((dt: Record<string, any>) => {
         A+=dt.A
         B+=dt.B
         C+=dt.C
@@ -71,15 +73,12 @@ function Page() {
         data: [A, B, C, D, E, F]
     }]
 
-    const [seriesLine, setSeriesLine] = useState([])
-
     useEffect(() => {
         let totalByDate: number[] = []
-        // eslint-disa
-        Object.entries(Data.groupBy(({ Day }) => Day)).map((dt: any[]) => { // eslint-disable-line
+        Object.entries(Data.groupBy(({ Day }: { Day: string }) => Day)).map((dt: Record<string, any>) => {
             let sum = 0
             
-            dt[1].map((f:any) => sum+=f[feature])
+            dt[1].map((f: Record<string, any>) => sum+=f[feature])
             totalByDate.push(sum)
         })
 
@@ -123,7 +122,7 @@ function Page() {
                     <CardContent className='flex justify-center'>
                     <DateRange
                         editableDateInputs={true}
-                        onChange={(item:any) => setRange([item.selection])}
+                        onChange={(item: Record<string, any>) => setRange([item.selection])}
                         moveRangeOnFirstSelection={false}
                         ranges={range}
                     />
